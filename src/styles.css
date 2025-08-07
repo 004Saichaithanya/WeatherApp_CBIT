@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eaf6fd 0%, #c1e2e6 100%);
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.glass-bg {
+  background: rgba(59, 70, 100, 0.7);
+  backdrop-filter: blur(8px);
+  /* Adds a pleasant glassmorphic effect */
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 4vw 14px 4vw;
+  width: 100vw;
+  box-sizing: border-box;
+  border-bottom: 2px solid #fff2;
+  z-index: 100;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  width: 90px;
+  height: 90px;
+  border-radius: 15px;
+  box-shadow: 0 2px 18px #2222;
+}
+.logo img {
+  max-width: 68px;
+  max-height: 68px;
+}
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.header-content h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #faf9f4;
+}
+.header-content p {
+  margin: 0;
+  font-size: 1.1em;
+  color: #eae1bf;
+  font-weight: 400;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: stretch;
+  margin: 0 0 30px 0;
+}
+
+/* Current Weather */
+.current-weather {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px auto 0 auto;
+  padding: 40px 6vw;
+  border-radius: 20px;
+  box-shadow: 0 6px 45px #48a3c644;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  max-width: 950px;
+  width: 95vw;
+  position: relative;
+  z-index: 2; /* above the watermark */
+}
+
+/* Left section: icon + main info */
+.weather-main-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.weather-bigicon {
+  font-size: 5em;
+  filter: drop-shadow(1px 3px 16px #48a3c633);
+  margin-right: 10px;
+}
+.main-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.city {
+  font-size: 1.5em;
+  color: #205179;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.temp-details {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 4px;
+}
+.temp {
+  font-size: 3.7em;
+  font-weight: 600;
+  color: #127bc7;
+  letter-spacing: -2px;
+}
+.condition {
+  font-size: 1.25em;
+  color: #346092;
+  font-weight: 500;
+}
+
+/* Weather Stats */
+.weather-stats {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 110px;
+}
+.label {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 1.13em;
+  color: #218ebf;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.weather-icon {
+  font-size: 1.25em;
+  color: #2088ad;
+}
+.stat-value {
+  font-size: 1.2em;
+  color: #24436b;
+  font-weight: 700;
+  margin-left: 5px;
+  margin-top: 3px;
+  letter-spacing: 1px;
+}
+
+/* 7 Day Forecast Section */
+.forecast-section {
+  flex: 1;
+  border-radius: 24px;
+  padding: 35px 5vw 22px 5vw;
+  max-width: 950px;
+  width: 95vw;
+  margin: 0 auto 22px auto;
+  background: rgba(255,255,255,0.12);
+}
+.forecast-section h2 {
+  color: #205179;
+  font-size: 1.4rem;
+  margin: 0 0 16px 0;
+}
+.forecast-list {
+  display: flex;
+  overflow-x: auto;
+  gap: 24px;
+  padding: 12px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #bcd5f0 #fff8;
+}
+.forecast-list::-webkit-scrollbar {
+  height: 7px;
+  background: #e4ebfd;
+  border-radius: 8px;
+}
+.forecast-list::-webkit-scrollbar-thumb {
+  background: #a7bbe6dd;
+  border-radius: 8px;
+}
+.forecast-card {
+  background: rgba(235,244,247,0.9);
+  border-radius: 17px;
+  min-width: 132px;
+  padding: 21px 12px;
+  text-align: center;
+  box-shadow: 0 3px 18px #7a99c644;
+  color: #2d3b57;
+  transition: transform 0.13s, box-shadow 0.13s;
+  border: 1.3px solid #efede6;
+  position: relative;
+}
+.forecast-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 8px 29px #58bcda55;
+  background: #fff;
+}
+.forecast-icon {
+  font-size: 2.3em;
+  filter: drop-shadow(1px 1px 6px #b8e7fa88);
+}
+.forecast-title {
+  font-weight: 700;
+  margin-bottom: 3px;
+  font-size: 1.15em;
+  color: #2a4e7d;
+}
+.forecast-date {
+  font-size: 0.97em;
+  color: #6c95b6;
+  margin-bottom: 7px;
+}
+.forecast-temp {
+  font-size: 2em;
+  font-weight: 700;
+  color: #228ec3;
+}
+.forecast-min {
+  font-size: 1em;
+  color: #8cb3cc;
+}
+.forecast-condition {
+  font-size: 1em;
+  color: #206b92;
+  margin-top: 6px;
+}
+
+/* Glassy card utility */
+.glass-card {
+  background: rgba(255,255,255,0.32);
+  backdrop-filter: blur(3px);
+}
+
+/* Footer */
+.footer {
+  width: 95vw;
+  max-width: 950px;
+  color: #537480;
+  margin: 36px auto 0 auto;
+  font-size: 1.12em;
+  text-align: right;
+  padding: 16px 12px 18px 0;
+  border-radius: 18px;
+}
+
+/* Watermark container covering the whole viewport */
+.watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 500px;  /* Adjust size as needed */
+  height: 500px; /* Keep aspect ratio */
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Allows clicks through */
+  opacity: 0.08;        /* Subtle visibility */
+  z-index: 0;           /* Behind all content */
+  background: url('/cbit_logo.png') no-repeat center center;
+  background-size: contain;
+  user-select: none;
+}
+
+/* -------- Responsive --------- */
+@media (max-width: 950px) {
+  .header, .main-content, .footer, .forecast-section, .current-weather {
+    max-width: 100vw;
+    width: 100vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  .current-weather, .forecast-section {
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    gap: 9px;
+    text-align: center;
+  }
+  .logo {
+    margin: 0 auto;
+  }
+  .main-content {
+    gap: 30px;
+  }
+  .current-weather {
+    flex-direction: column;
+    padding: 21px 3vw;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .weather-main-left {
+    flex-direction: row;
+    gap: 20px;
+  }
+  .temp {
+    font-size: 2.2em;
+  }
+  .weather-stats {
+    gap: 25px;
+    font-size: 0.97em;
+  }
+  .forecast-section {
+    padding: 17px 4vw 9px 4vw;
+  }
+  .forecast-card {
+    min-width: 108px;
+    font-size: 0.97em;
+  }
+}
+
+@media (max-width: 500px) {
+  .current-weather {
+    padding: 18px 1vw;
+  }
+  .weather-main-left {
+    gap: 13px;
+  }
+  .stat-block {
+    min-width: 70px;
+  }
+  .weather-bigicon {
+    font-size: 2.3em;
+  }
+  .header-content h1 {
+    font-size: 1.12rem;
+  }
+  .header-content p {
+    font-size: 0.98em;
+  }
+  .footer {
+    font-size: 0.98em;
+    padding-right: 2vw;
+  }
+}
+
+/* Nice subtle transition everywhere */
+* {
+  transition: background 0.15s, box-shadow 0.12s, color 0.11s;
+}
+.forecast-carousel {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.forecast-list {
+  display: flex;
+  gap: 24px;
+   min-width: max-content; 
+  animation: scroll-forecast 20s linear infinite;
+  /* Adjust speed (20s), can make slower for a more relaxed screen */
+}
+
+@keyframes scroll-forecast {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Duplicate the cards at the end for seamless loop (see below) */
+
